@@ -2642,16 +2642,51 @@ typedef uint16_t uintptr_t;
 
 
 
+
+char cambio;
+char valor;
+int multi;
+char centena;
+char decena;
+char unidad;
+
+char display[10] = {0b00111111,0b00000110,0b01011011,0b01001111,0b01100110,
+0b01101101,0b01111101,0b00000111,0b01111111,0b01101111};
+
+
 void setup(void);
+char division(void);
 
 void __attribute__((picinterrupt(("")))) isr(void) {
-    if (PIR1bits.ADIF){
-        if (ADCON0bits.CHS == 6)
-            PORTC = ADRESH;
-        else
+    if (T0IF == 1) {
+        PORTAbits.RA2 = 0;
+        PORTAbits.RA0 = 1;
+        PORTC = (display[centena]);
+        multi = 0b00000001;
+
+        if (multi == 0b00000001) {
+            PORTAbits.RA0 = 0;
+            PORTAbits.RA1 = 1;
+            PORTC = (display[decena]);
+            multi = 0b00000010;
+        }
+        if (multi == 0b00000010) {
+            PORTAbits.RA1 = 0;
+            PORTAbits.RA2 = 1;
+            PORTC = (display[unidad]);
+            multi = 0x00;
+        }
+        INTCONbits.T0IF = 0;
+        TMR0 = 255;
+
+    if (PIR1bits.ADIF == 1){
+        if (ADCON0bits.CHS == 5)
             PORTD = ADRESH;
+        else
+            valor = ADRESH;
         PIR1bits.ADIF = 0;
     }
+  }
 }
 
 void main (void){
@@ -2663,9 +2698,11 @@ void main (void){
                 ADCON0bits.CHS = 5;
             else
                 ADCON0bits.CHS = 6;
-            _delay((unsigned long)((50)*(4000000/4000000.0)));
+            _delay((unsigned long)((100)*(4000000/4000000.0)));
             ADCON0bits.GO = 1;
         }
+
+        division();
     }
 }
 
@@ -2673,10 +2710,12 @@ void setup(void){
     ANSEL = 0b01100000;
     ANSELH = 0;
 
+    TRISA = 0;
     TRISC = 0;
     TRISD = 0;
     TRISE = 0b011;
 
+    PORTA = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
@@ -2695,11 +2734,25 @@ void setup(void){
     _delay((unsigned long)((50)*(4000000/4000000.0)));
 
 
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS2 = 1;
+    OPTION_REGbits.PS1 = 1;
+    OPTION_REGbits.PS0 = 1;
+
 
     PIR1bits.ADIF = 0;
     PIE1bits.ADIE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
-
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
     return;
+}
+
+char division(void){
+    centena = valor/100;
+    unidad = valor%100;
+    decena = unidad/10;
+    unidad = unidad%10;
 }
