@@ -11,6 +11,10 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+reset_vec CODE 0 0 0 3 2
+end_init CODE 0 C C 3 2
+config CONFIG 4 2007 2007 2 2
 $dist/default/production\lab8.X.production.o
 cinit CODE 0 F F 4 2
 text1 CODE 0 13 13 33 2
@@ -18,10 +22,6 @@ text2 CODE 0 70 70 1C 2
 maintext CODE 0 46 46 2A 2
 cstackCOMMON COMMON 1 70 70 5 1
 intentry CODE 0 4 4 8 2
-config CONFIG 4 2007 2007 2 2
-$C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-reset_vec CODE 0 0 0 3 2
-end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -69,11 +69,11 @@ STRING 8C-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\lab8.X.production.o
-F cinit CODE >457:C:\Users\USUARI~1\AppData\Local\Temp\s7ro.s
-F cinit CODE >460:C:\Users\USUARI~1\AppData\Local\Temp\s7ro.s
-F cinit CODE >466:C:\Users\USUARI~1\AppData\Local\Temp\s7ro.s
-F cinit CODE >468:C:\Users\USUARI~1\AppData\Local\Temp\s7ro.s
-10 cinit CODE >469:C:\Users\USUARI~1\AppData\Local\Temp\s7ro.s
+F cinit CODE >457:C:\Users\USUARI~1\AppData\Local\Temp\sajs.s
+F cinit CODE >460:C:\Users\USUARI~1\AppData\Local\Temp\sajs.s
+F cinit CODE >466:C:\Users\USUARI~1\AppData\Local\Temp\sajs.s
+F cinit CODE >468:C:\Users\USUARI~1\AppData\Local\Temp\sajs.s
+10 cinit CODE >469:C:\Users\USUARI~1\AppData\Local\Temp\sajs.s
 4 intentry CODE >22:C:\Users\Usuario Dell\Documents\.MICROs\lab\laboratorio_8\lab8.X\main8.c
 70 text2 CODE >22:C:\Users\Usuario Dell\Documents\.MICROs\lab\laboratorio_8\lab8.X\main8.c
 70 text2 CODE >23:C:\Users\Usuario Dell\Documents\.MICROs\lab\laboratorio_8\lab8.X\main8.c
@@ -134,18 +134,18 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+___sp 0 0 STACK 2 stack C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 _main 8C 0 CODE 0 maintext dist/default/production\lab8.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\lab8.X.production.o
-start 18 0 CODE 0 init C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+start 18 0 CODE 0 init C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 __size_of_main 0 0 ABS 0 - dist/default/production\lab8.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\lab8.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\lab8.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -153,11 +153,11 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ADRESH 1E 0 ABS 0 - dist/default/production\lab8.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\lab8.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
-___stacklo 0 0 ABS 0 - C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+___stackhi 0 0 ABS 0 - C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
+___stacklo 0 0 ABS 0 - C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\lab8.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\lab8.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+___int_sp 0 0 STACK 2 stack C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -199,7 +199,7 @@ _isr E0 0 CODE 0 text2 dist/default/production\lab8.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\lab8.X.production.o
 __end_of_isr 118 0 CODE 0 text2 dist/default/production\lab8.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\USUARI~1\AppData\Local\Temp\s7ro.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\USUARI~1\AppData\Local\Temp\sajs.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\lab8.X.production.o
 __pmaintext 8C 0 CODE 0 maintext dist/default/production\lab8.X.production.o
 __Lcommon 0 0 ABS 0 common -
